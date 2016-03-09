@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div id="app">
+  <h1>{{text}}</h1>
+  <h4>{{fullName}}</h4>
+  <input type="text" @change="setName" v-model="text">
+  <ul>
+    <li v-for="todo in todos">
+      {{todo}}
+    </li>
+  </ul>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+  (function(){
+    var App=Vue.extend({
+      el:'#app',
+      data:{
+        text:'Hello world!',
+        firstName:'William',
+        lastName:'Du',
+        todos:[1,2,3,4,5]
+      },
+      methods:{
+        setName:function(){
+          this.fullName=this.text;
+        }
+      },
+      computed:{
+        fullName:{
+          get:function(){
+            return this.firstName+' '+this.lastName;
+          },
+
+          set:function(val){
+            var arr=val.split(' ');
+
+            this.firstName=arr[0];
+            this.lastName=arr[1];
+          }
+
+        }
+      }
+    });
+    Vue.component('app',App);
+    new App();
+  })();
+</script>
+</body>
+</html>

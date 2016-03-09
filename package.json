@@ -1,0 +1,21 @@
+{
+  "name": "vuedemo",
+  "version": "1.0.0",
+  "description": "a vuejs demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "William",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^1.0.17"
+  }
+}
