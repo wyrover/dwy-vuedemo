@@ -2,56 +2,48 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title></title>
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <title>Vue Demo</title>
+  <style>
+
+    .v-link-active{
+      background: lightseagreen;
+    }
+
+    .navbar-default>.navbar-nav>li>a.v-link-active:hover,.navbar-default>.navbar-nav>li>a.v-link-active:focus{
+      background: lightseagreen;
+    }
+
+    /* 必需 */
+    .slide-transition {
+      transition: all 0.5s ease;
+    }
+
+
+    .slide-enter{
+      transform: translate(20%,0);
+      opacity: 0;
+    }
+    .slide-leave {
+      /*transform: translate(-100%,0);*/
+      /*opacity: 0;*/
+      display: none;
+    }
+
+    .module-container{
+      /*position: absolute;*/
+      /*width: 100%;*/
+      /*top:72px;*/
+    }
+  </style>
+  <script src="node_modules/vue/dist/vue.js"></script>
+  <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+  <script src="node_modules/vue-router/dist/vue-router.js"></script>
+  <script src="node_modules/vue-validator/dist/vue-validator.min.js"></script>
+  <script src="dist/bundle.js"></script>
+  <script src="app/boot.js"></script>
 </head>
-<body>
-<div id="app">
-  <h1>{{text}}</h1>
-  <h4>{{fullName}}</h4>
-  <input type="text" @change="setName" v-model="text">
-  <ul>
-    <li v-for="todo in todos">
-      {{todo}}
-    </li>
-  </ul>
-</div>
+<body id="app">
 
-<script src="node_modules/vue/dist/vue.js"></script>
-<script>
-
-  (function(){
-    var App=Vue.extend({
-      el:'#app',
-      data:{
-        text:'Hello world!',
-        firstName:'William',
-        lastName:'Du',
-        todos:[1,2,3,4,5]
-      },
-      methods:{
-        setName:function(){
-          this.fullName=this.text;
-        }
-      },
-      computed:{
-        fullName:{
-          get:function(){
-            return this.firstName+' '+this.lastName;
-          },
-
-          set:function(val){
-            var arr=val.split(' ');
-
-            this.firstName=arr[0];
-            this.lastName=arr[1];
-          }
-
-        }
-      }
-    });
-    Vue.component('app',App);
-    new App();
-  })();
-</script>
 </body>
 </html>
