@@ -5,7 +5,8 @@
         account: {
           email: 'parox2014@gmail.com',
           nickname: 'William nicolas',
-          password: '25415257'
+          password: '25415257',
+          confirmation:'5245454'
         }
       }
     },
@@ -17,6 +18,8 @@
             placeholder="example@google.com"
             v-validate:email="{required:true,email:true}"
             type="email"
+            v-autofocus
+            v-autoselect
             v-model="account.email">
           </div>
 
@@ -52,6 +55,27 @@
             <p v-show="$signupValidator.password.maxlength&&!$signupValidator.password.pristine">password too long</p>
           </div>
 
+          <div class="form-group">
+            <input class="form-control"
+              v-confirmation="account.confirmation"
+              v-bind:origin="account.password"
+              name="confirmation"
+              v-validate:confirmation="{required:true,minlength:6,maxlength:50}"
+              placeholder="password"
+              type="password"
+              v-model="account.confirmation">
+
+          </div>
+
+          <div class="alert alert-danger" v-show="$signupValidator.confirmation.invalid&&!$signupValidator.confirmation.pristine">
+            <p v-show="$signupValidator.confirmation.required&&!$signupValidator.confirmation.pristine">password required</p>
+            <p v-show="$signupValidator.confirmation.minlength&&!$signupValidator.confirmation.pristine">password too short</p>
+            <p v-show="$signupValidator.confirmation.maxlength&&!$signupValidator.confirmation.pristine">password too long</p>
+            <p v-show="$signupValidator.confirmation.confirmation&&!$signupValidator.confirmation.pristine">password is diff with origin</p>
+          </div>
+      <div class="errors">
+        <validator-errors :validation="$signupValidator"></validator-errors>
+      </div>
           <button class="btn btn-success btn-block" type="submit" :disabled="$signupValidator.invalid">Signup</button>
         </form>
     </validator>
