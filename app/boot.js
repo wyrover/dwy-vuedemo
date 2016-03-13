@@ -1,6 +1,30 @@
 (function(){
   Vue.config.debug=true;
 
+  Vue.http.interceptors.push({
+
+    request: function (request) {
+      return request;
+    },
+
+    response: function (response) {
+      debugger;
+      return response;
+    }
+
+  });
+
+  Vue.service('User',{
+    signin:function(account){
+
+    },
+    signout:function(){
+
+    }
+  });
+
+  var user=Vue.service('User');
+
   var App = Vue.extend({
     data: function () {
       return {
@@ -8,7 +32,11 @@
         author: 'William Du',
         links:[
           {name:'signup',linkText:'Signup'},
-          {name:'dropdown',linkText:'Dropdown'}
+          {name:'dropdown',linkText:'Dropdown'},
+          {name:'list',linkText:'List'},
+          {name:'modal',linkText:'Modal'},
+          {name:'tabs',linkText:'Tabs'},
+          {name:'accordion',linkText:'Accordion'}
         ]
       }
     },
@@ -43,6 +71,22 @@
     '/dropdown':{
       name:'dropdown',
       component:Vue.component('dropdown-comp')
+    },
+    '/list':{
+      name:'list',
+      component:Vue.component('list-comp')
+    },
+    '/modal':{
+      name:'modal',
+      component:Vue.component('modal-comp')
+    },
+    '/tabs':{
+      name:'tabs',
+      component:Vue.component('tab-demo')
+    },
+    '/accordion':{
+      name:'accordion',
+      component:Vue.component('accordion-demo')
     }
   });
 

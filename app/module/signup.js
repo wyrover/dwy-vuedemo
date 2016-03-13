@@ -7,7 +7,7 @@
       }
     },
     template:`
-        <panel :heading="title" transition="slide" class="slide-transition module-container">
+        <panel :heading="title" transition="slide" class="slide-transition panel-success">
           <signup-form @success="onSuccess" @fail="onFail"></signup-form>
         </panel>
       `,

@@ -17,10 +17,12 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.6",
+    "lodash": "^4.6.1",
     "vue": "^1.0.17",
     "vue-resource": "^0.7.0",
     "vue-router": "^0.7.11",
-    "vue-validator": "^2.0.0-alpha.22"
+    "vue-validator": "^2.0.0-alpha.22",
+    "zepto": "^1.0.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
